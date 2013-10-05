@@ -114,6 +114,16 @@ textarea {
   margin-top: 70px;
 }
 
+.contact ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact ul li {
+  display: inline;
+}
+
 @media (max-width: 1100px) {
   .zl {
     margin-left: 11.4%;

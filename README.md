@@ -1,6 +1,7 @@
 # Personal Website ![Analytics](https://ga-beacon.appspot.com/UA-34529482-6/zachlatta.github.io/readme?pixel)
 
-Welcome to my website's GitHub repo. It's not much, but it's something.
+Welcome to my website's GitHub repo. It's not much, but it's something. You
+can check it out over at http://zachlatta.com/.
 
 ## License
 

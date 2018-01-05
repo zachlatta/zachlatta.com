@@ -24,5 +24,13 @@
         s.parentNode.insertBefore(wf, s);
       })(document);
     </script>
+    <!-- Redirect HTTP to HTTPS on production -->
+    <script>
+      if (window.location.hostname === 'zachlatta.com' &&
+          window.location.protocol === 'http:') {
+        window.location = 'https://' + window.location.hostname +
+          window.location.pathname;
+      }
+    </script>
   </body>
 </html>

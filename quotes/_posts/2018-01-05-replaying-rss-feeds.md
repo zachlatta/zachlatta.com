@@ -1,6 +1,7 @@
 ---
 layout: quote
 date: 2018-01-05 06:40:50 -0800
+tags: idea
 ---
 
 Something I've wanted for a long time: a way to "replay" RSS feeds of old blogs.

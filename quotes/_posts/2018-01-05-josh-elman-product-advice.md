@@ -1,6 +1,7 @@
 ---
 layout: quote
 date: 2018-01-05 04:58:17 -0800
+tags: product
 ---
 
 > Building something that users understand and enjoy is all that matters. If they don't get it, you aren't making it easy enough to learn.

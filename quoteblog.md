@@ -1,0 +1,3 @@
+---
+layout: quote_index
+---

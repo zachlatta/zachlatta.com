@@ -1,0 +1,24 @@
+---
+layout: null
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zach Latta's Quoteblog</title>
+    <description>Quotes assembled by Zach Latta.</description>
+    <atom:link href="{{ "/quotes_feed.xml" | absolute_url }}" rel="self" type="application/rss+xml" />
+    <link>{{ site.url }}</link>
+    {% for quote in site.categories.quotes %}
+      {% unless quote.draft %}
+        <item>
+          <title>{{ quote.title | xml_escape }}</title>
+          <description>{{ quote.content | xml_escape }}</description>
+          <pubDate>{{ quote.date | date_to_rfc822 }}</pubDate>
+          <link>{{ quote.url | prepend: site.url }}</link>
+          <guid isPermaLink="true">{{ quote.url | prepend: site.url }}</guid>
+        </item>
+      {% endunless %}
+    {% endfor %}
+  </channel>
+</rss>

@@ -12,6 +12,13 @@ a {
   border-bottom: 1px dotted #929292;
 }
 
+blockquote {
+  border-left: 1px solid #929292;
+  padding-left: 15px;
+}
+
+/* Homepage */
+
 .home-container {
   max-width: 500px;
   margin-left: auto;
@@ -54,4 +61,36 @@ a {
   margin-bottom: 50px;
   margin-left: -15px;
   text-align: center;
+}
+
+/* Quote pages */
+
+.quote-container {
+  max-width: 700px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.quote-title {
+  margin-bottom: 50px;
+  font-style: underline;
+}
+
+.quote {
+  display: flex;
+  flex-direction: row;
+  margin-left: -50px;
+}
+
+.quote-date {
+  width: 100px;
+  text-align: right;
+  margin-right: 25px;
+}
+
+.quote-body {
+  margin-top: -18px;
 }

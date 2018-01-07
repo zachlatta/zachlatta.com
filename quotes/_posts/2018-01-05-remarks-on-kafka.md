@@ -9,4 +9,4 @@ date: 2018-01-05 09:19:45 -0800
 >
 > Do you think it's a coincidence that college is when many Americans do their most serious fucking and falling-down drinking and generally ecstatic Dionysian-type reveling? It's not. College students are adolescents, and they're terrified, and they're dealing with their terror in a distinctively US way. Those naked boys hanging upside-down out of their frat house's windows on Friday night are simply trying to buy a few hours' escape from the grim adult stuff that any decent school has forced them to think about all week.
 
--- David Foster Wallance, Consider the Lobster (pg. 64, paraphrased)
+Some Remarks on Kafka's Funniness, Consider the Lobster (pg. 64, paraphrased)

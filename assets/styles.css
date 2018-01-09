@@ -95,6 +95,10 @@ blockquote {
   margin-top: -18px;
 }
 
+.quote-body img {
+  width: 100%;
+}
+
 @media only screen and (max-width: 800px) {
   .quote {
     margin-left: 0;

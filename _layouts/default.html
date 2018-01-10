@@ -5,21 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zach Latta</title>
     <style>
+      {% include vendor/noto_serif_webfont.css %}
       {% include styles.css %}
     </style>
     {% include analytics.html %}
   </head>
   <body>
     {{ content }}
-    <!-- Load Noto Serif async for Linux compatibility, since Georgia is not
-      available on Linux -->
-    <script>
-      {% include vendor/webfont.js %}
-      WebFont.load({
-        google: {
-          families: ['Noto Serif']
-        }
-      })
-    </script>
   </body>
 </html>

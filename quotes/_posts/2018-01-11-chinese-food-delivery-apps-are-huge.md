@@ -9,6 +9,6 @@ date: 2018-01-11 02:01:47 -0800
 
 > There were 751 million internet users in mainland China as of June, almost 20 million more than at the end of 2016, according to the report.
 
-295 million people have ordered food delivery online. 751 million people use the internet. These numbers are hard to fathom.
+295 million people in China ordered online food delivery the first half of 2017. Out of 751 million internet users. These numbers are hard to fathom.
 
 [China's Hottest Internet Sector Is Old-Fashioned Food Delivery](https://www.bloomberg.com/news/articles/2017-08-04/china-s-hottest-internet-sector-is-old-fashioned-food-delivery)

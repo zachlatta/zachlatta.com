@@ -2,7 +2,7 @@
 layout: home
 ---
 
-**Zach Latta** is the founder of [Hack Club](https://hackclub.com), a nonprofit network of coding clubs building the best way to become a hacker. It is now in 1% of US high schools and has doubled its reach every year since launching in 2016.
+**Zach Latta** is the founder of [Hack Club](https://hackclub.com), a nonprofit network of coding clubs building the best way to become a hacker. It is now in 2% of US high schools and has doubled its reach every year since launching in 2016.
 
 In high school he helped develop [Football Heroes](https://play.google.com/store/apps/details?id=com.rungames.footballheroespro2017), a popular arcade football game. After his freshman year, he dropped out and moved from Los Angeles to San Francisco to become the first engineer at [Yo](http://www.bbc.com/news/technology-28247504), a silly messaging app.
 

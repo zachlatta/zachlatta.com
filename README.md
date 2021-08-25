@@ -8,6 +8,7 @@ You should not need to set this explicitly, unless you are doing some sort of fa
 
 - [X] Get Docker container running on `slowking`
 - [X] Expose running instance on `slowking` on the public web
+- [ ] Get `public` app to fallback to files in `db/public/`
 - [ ] Get GitHub Actions to build and push Docker image on push.
 - [ ] Automatically pull and restart Docker container on `slowking` after a push
 

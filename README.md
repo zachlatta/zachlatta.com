@@ -33,5 +33,5 @@ ROUTES<mapping and runtimes specified>
 **Deployment architecture:**
 
 ```
-public internet -> cloudflare -> proxy instance running tailscale (on vultr) -> slowking
+public internet -> cloudflare -> relay running tailscale (on vultr) -> slowking
 ```

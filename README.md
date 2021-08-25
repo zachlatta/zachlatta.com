@@ -1,3 +1,9 @@
+Every application reads a `$BASEDIR` variable that it bases all of its relative links on.
+
+Example (and default) value: `BASEDIR=/zachlatta.com` (there is no trailing slash)
+
+You should not need to set this explicitly, unless you are doing some sort of fancy configuration setup.
+
 Design goals:
 
 - Feeling of being self-hosted and handmade, like Cliff Stoll's website

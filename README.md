@@ -25,10 +25,12 @@ Design goals:
 
 Ideas:
 
+```
 public/<files in repo alongside files on NAS>
 db/
 /<app folders>
 ROUTES<mapping and runtimes specified>
+```
 
 ---
 

@@ -4,12 +4,14 @@ if [[ -z "${BASEDIR}" ]]; then
     BASEDIR="/zachlatta.com"
 fi
 
-echo $BASEDIR/ROUTES
-cat $BASEDIR/ROUTES
+# TODO: Parse ROUTES, write first backend to serve public files out of /public
 
 # Write out generated /nginx/nginx.conf file
 cat > /etc/nginx/nginx.conf <<- EOM
 # /etc/nginx/nginx.conf
+
+daemon off;
+error_log /dev/stdout info;
 
 user nginx;
 
@@ -36,6 +38,8 @@ events {
 }
 
 http {
+        access_log /dev/stdout;
+
         # Includes mapping of file name extensions to MIME types of responses
         # and defines the default type.
         include /etc/nginx/mime.types;
@@ -93,14 +97,6 @@ http {
         # Set the Vary HTTP header as defined in the RFC 2616. Default is 'off'.
         gzip_vary on;
 
-
-        # Helper variable for proxying websockets.
-        map $http_upgrade $connection_upgrade {
-                default upgrade;
-                '' close;
-        }
-
-
         # Specifies the main log format.
         log_format main '$remote_addr - $remote_user [$time_local] "$request" '
                         '$status $body_bytes_sent "$http_referer" '
@@ -109,8 +105,12 @@ http {
         # Sets the path, format, and configuration for a buffered log write.
         access_log /var/log/nginx/access.log main;
 
+        server {
+            listen 80 default_server;
 
-        # Includes virtual hosts configs.
-        include /etc/nginx/http.d/*.conf;
+            location / {
+                root `echo $BASEDIR`/public;
+            }
+        }
 }
 EOM

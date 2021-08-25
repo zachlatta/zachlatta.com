@@ -12,6 +12,7 @@ RUN gunzip -d /tmp/overmind-v2.2.2-linux-amd64.gz && \
     chmod +x /usr/local/bin/overmind
 
 ENV BASEDIR /zachlatta.com
+WORKDIR $BASEDIR
 
 COPY . $BASEDIR/
 

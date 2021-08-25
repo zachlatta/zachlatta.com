@@ -3,6 +3,9 @@ IMAGE=zachlatta/zachlatta.com
 build: Dockerfile
 	docker build -t $(IMAGE) .
 
+push:
+	docker push $(IMAGE)
+
 shell:
 	docker run -it --rm \
 		--volume $(PWD):/zachlatta.com \

@@ -1,5 +1,0 @@
-url: "https://zachlatta.com"
-baseurl: ""
-markdown: kramdown
-plugins:
-  - jekyll-sitemap

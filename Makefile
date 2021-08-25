@@ -19,7 +19,6 @@ shell: build
 .PHONY: run
 run: build
 	docker run -it --rm \
-		--volume $(PWD):/zachlatta.com \
 		-p 1337:80 \
 		$(IMAGE)
 

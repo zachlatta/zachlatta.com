@@ -27,3 +27,11 @@ public/<files in repo alongside files on NAS>
 db/
 /<app folders>
 ROUTES<mapping and runtimes specified>
+
+---
+
+**Deployment architecture:**
+
+```
+public internet -> cloudflare -> proxy instance running tailscale (on vultr) -> slowking
+```

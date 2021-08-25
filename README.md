@@ -6,9 +6,8 @@ You should not need to set this explicitly, unless you are doing some sort of fa
 
 ---
 
-Get Docker container running on `slowking`
-
-Get GitHub Actions to build and push Docker image on push.
+- [ ] Get Docker container running on `slowking`
+- [ ] Get GitHub Actions to build and push Docker image on push.
 
 ---
 

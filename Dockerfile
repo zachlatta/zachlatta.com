@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-EXPOSE 1337
+EXPOSE 80
 
 RUN apk add nginx go
 

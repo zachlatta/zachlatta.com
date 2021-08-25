@@ -1,3 +1,5 @@
 #!/bin/sh
 
-nginx
+cd $BASEDIR
+
+overmind start --no-port

@@ -1,6 +1,6 @@
 IMAGE=zachlatta/zachlatta.com
 
-build:
+build: Dockerfile
 	docker build -t $(IMAGE) .
 
 shell:
@@ -8,6 +8,12 @@ shell:
 		--volume $(PWD):/zachlatta.com \
 		-p 1337:80 \
 		--entrypoint /bin/sh \
+		$(IMAGE)
+
+run:
+	docker run -it --rm \
+		--volume $(PWD):/zachlatta.com \
+		-p 1337:80 \
 		$(IMAGE)
 
 default: build

@@ -1,9 +1,5 @@
 #!/bin/sh
 
-if [[ -z "${BASEDIR}" ]]; then
-    BASEDIR="/zachlatta.com"
-fi
-
 # TODO: Parse ROUTES, write first backend to serve public files out of /public
 
 # Write out generated /nginx/nginx.conf file
@@ -109,7 +105,7 @@ http {
             listen 80 default_server;
 
             location / {
-                root `echo $BASEDIR`/public;
+                proxy_pass http://127.0.0.1:2022;
             }
         }
 }

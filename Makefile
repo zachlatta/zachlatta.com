@@ -1,19 +1,23 @@
 IMAGE=zachlatta/zachlatta.com
 
+.PHONY: build
 build: Dockerfile
 	docker build -t $(IMAGE) .
 
-push:
+.PHONY: push
+push: build
 	docker push $(IMAGE)
 
-shell:
+.PHONY: shell
+shell: build
 	docker run -it --rm \
 		--volume $(PWD):/zachlatta.com \
 		-p 1337:80 \
 		--entrypoint /bin/sh \
 		$(IMAGE)
 
-run:
+.PHONY: run
+run: build
 	docker run -it --rm \
 		--volume $(PWD):/zachlatta.com \
 		-p 1337:80 \

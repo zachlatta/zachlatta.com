@@ -4,6 +4,14 @@ Example (and default) value: `BASEDIR=/zachlatta.com` (there is no trailing slas
 
 You should not need to set this explicitly, unless you are doing some sort of fancy configuration setup.
 
+---
+
+Get Docker container running on `slowking`
+
+Get GitHub Actions to build and push Docker image on push.
+
+---
+
 Design goals:
 
 - Feeling of being self-hosted and handmade, like Cliff Stoll's website

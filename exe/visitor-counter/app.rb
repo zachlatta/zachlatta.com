@@ -31,7 +31,7 @@ thr = Thread.new {
     end
 }
 
-get '/*.*' do
+get '/*' do
     # /https://zachlatta.co/asdf -> https://zachlatta.com/asdf
     # 
     # removes leading / character added by sinatra

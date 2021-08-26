@@ -11,3 +11,15 @@ conversations.</p>
 <a href="https://cloud-ernr399b1-hack-club-bot.vercel.app/02021-08-16_171514.jpg">
     <img src="https://cloud-pzuawb4y7-hack-club-bot.vercel.app/02021-08-16_171514_small.jpg" alt="Sunset in Vermont">
 </a>
+
+<p>this page has been visited <span id="visitCount"><em>loading...</em></span> times.</p>
+
+<script type="text/javascript">
+let visitCountE = document.getElementById("visitCount")
+
+fetch(`/visitor-counter/${window.location}`)
+    .then(resp => resp.text())
+    .then(visitorCount => {
+        visitCountE.innerText = visitorCount
+    })
+</script>

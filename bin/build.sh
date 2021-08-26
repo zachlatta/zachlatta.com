@@ -1,6 +1,11 @@
 #!/bin/sh
 
-# TODO: Parse ROUTES, write first backend to serve public files out of /public
+cd $BASEDIR
+
+# Build sub-apps
+./exe/public/bin/build
+
+# TODO: Parse ROUTES and generate nginx config accordingly
 
 # Write out generated /nginx/nginx.conf file
 cat > /etc/nginx/nginx.conf <<- EOM

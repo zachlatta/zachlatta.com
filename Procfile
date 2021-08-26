@@ -1,2 +1,2 @@
 nginx: nginx
-public: cd exe/public/ && go run main.go
+public: ./exe/public/bin/run

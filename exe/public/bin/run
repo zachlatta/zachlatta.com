@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd $BASEDIR/exe/public
+ls
+pwd
+./public

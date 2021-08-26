@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd $BASEDIR/exe/public
+go build -o public .

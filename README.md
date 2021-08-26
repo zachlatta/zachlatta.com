@@ -27,6 +27,10 @@ You should not need to set this explicitly, unless you are doing some sort of fa
 - [X] Expose running instance on `slowking` on the public web
 - [X] Get `public` app to fallback to files in `db/public/`
 - [X] Get GitHub Actions to build and push Docker image on push.
+- [ ] Build dynamic page counter service
+
+Future:
+
 - [ ] Automatically pull and restart Docker container on `slowking` after a push
 
 ---

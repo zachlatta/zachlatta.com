@@ -45,3 +45,6 @@ jobs:
         uses: tailscale/github-action@v1
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      - name: Ping slowking
+        run: ping ${{ secrets.SLOWKING_TAILSCALE_IP }}

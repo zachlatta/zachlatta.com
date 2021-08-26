@@ -16,6 +16,6 @@ WORKDIR $BASEDIR
 
 COPY . $BASEDIR/
 
-RUN $BASEDIR/bin/build.sh
+RUN $BASEDIR/bin/build
 
-ENTRYPOINT $BASEDIR/bin/start.sh
+ENTRYPOINT $BASEDIR/bin/start

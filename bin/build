@@ -4,6 +4,7 @@ cd $BASEDIR
 
 # Build sub-apps
 ./exe/public/bin/build
+./exe/visitor-counter/bin/build
 
 # TODO: Parse ROUTES and generate nginx config accordingly
 
@@ -111,6 +112,10 @@ http {
 
             location / {
                 proxy_pass http://127.0.0.1:2022;
+            }
+
+            location /visitor-counter {
+                proxy_pass http://127.0.0.1:2023/;
             }
         }
 }

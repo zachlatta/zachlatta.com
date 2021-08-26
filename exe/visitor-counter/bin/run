@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd $BASEDIR/exe/visitor-counter
+
+if [ -z "$PORT" ]; then
+    PORT=2023
+fi
+
+thin -p $PORT start

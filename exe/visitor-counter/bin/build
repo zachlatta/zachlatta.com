@@ -1,0 +1,7 @@
+#!/bin/sh
+
+apk add ruby ruby-etc ruby-dev make g++
+
+gem install json thin sinatra
+
+apk del ruby-dev make g++

@@ -2,7 +2,7 @@ FROM alpine:3.14
 
 EXPOSE 80
 
-RUN apk add nginx go
+RUN apk add nginx go ruby
 
 # install overmind, our Procfile runner
 RUN apk add tmux

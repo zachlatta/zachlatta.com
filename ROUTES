@@ -1,1 +1,4 @@
+# TODO -Make this a generated file that the nginx config pulls from
+
 / public
+/visitor-counter visitor-counter

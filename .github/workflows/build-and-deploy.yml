@@ -35,3 +35,12 @@ jobs:
           push: true
           tags: zachlatta/zachlatta.com:latest
           labels: ${{ steps.meta.output.labels }}
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Tailscale
+        uses: tailscale/github-action@v1
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}

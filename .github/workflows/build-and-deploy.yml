@@ -37,6 +37,7 @@ jobs:
           labels: ${{ steps.meta.output.labels }}
 
   deploy:
+    needs: build-push
     runs-on: ubuntu-latest
 
     steps:

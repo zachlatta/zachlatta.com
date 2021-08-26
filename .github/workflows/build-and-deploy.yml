@@ -1,0 +1,37 @@
+name: Build and push Docker iamge, then deploy on slowking
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build-push-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v2
+      
+      - name: Log into Docker Hub
+        uses: doocker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action
+        with:
+          images: |
+            zachlatta/zachlatta.com
+      
+      - name: Build and push Docker images
+        uses: docker-build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.output.labels }}

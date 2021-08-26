@@ -33,5 +33,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: zachlatta/zachlatta.com:latest
           labels: ${{ steps.meta.output.labels }}

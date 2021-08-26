@@ -1,4 +1,4 @@
-name: Build, push, & deploy
+name: Build & push
 
 on:
   push:
@@ -35,16 +35,3 @@ jobs:
           push: true
           tags: zachlatta/zachlatta.com:latest
           labels: ${{ steps.meta.output.labels }}
-
-  deploy:
-    needs: build-push
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Tailscale
-        uses: tailscale/github-action@v1
-        with:
-          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-
-      - name: Ping slowking
-        run: ping ${{ secrets.SLOWKING_TAILSCALE_IP }}

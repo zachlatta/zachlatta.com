@@ -15,13 +15,8 @@ db/
 /<app folders>
 ROUTES<mapping and runtimes specified>
 ```
-Every application reads a `$BASEDIR` variable that it bases all of its relative links on.
 
-Example (and default) value: `BASEDIR=/zachlatta.com` (there is no trailing slash)
-
-You should not need to set this explicitly, unless you are doing some sort of fancy configuration setup.
-
----
+To-dos:
 
 - [X] Get Docker container running on `slowking`
 - [X] Expose running instance on `slowking` on the public web
@@ -32,6 +27,14 @@ You should not need to set this explicitly, unless you are doing some sort of fa
 Future:
 
 - [ ] Automatically pull and restart Docker container on `slowking` after a push
+
+## Notes / For Future Reference
+
+Every application reads a `$BASEDIR` variable that it bases all of its relative links on.
+
+Example (and default) value: `BASEDIR=/zachlatta.com` (there is no trailing slash)
+
+You should not need to set this explicitly, unless you are doing some sort of fancy configuration setup.
 
 ---
 

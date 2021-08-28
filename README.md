@@ -2,7 +2,7 @@ Design goals:
 
 - Feeling of being self-hosted and handmade, like Cliff Stoll's website
 - Self-hosted, from my basement, on the NAS
-- Can serve as public homepage for myself
+- Can serve as public homepage for myself professionally
 - Can upload and serve files of arbitary size and type, not tracked by git (NAS?)
 - Dynamic elements on site, with a DB stored locally on the filesystem (Zephyr style)
 - Support for a backend in multiple lanaguges (maybe something kind of like CGI scripts?)
@@ -27,7 +27,7 @@ You should not need to set this explicitly, unless you are doing some sort of fa
 - [X] Expose running instance on `slowking` on the public web
 - [X] Get `public` app to fallback to files in `db/public/`
 - [X] Get GitHub Actions to build and push Docker image on push.
-- [ ] Build dynamic page counter service
+- [X] Build dynamic page counter service
 
 Future:
 

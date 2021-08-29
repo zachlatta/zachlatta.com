@@ -1,2 +1,12 @@
-.git/
-db/
+# This is an allowlist, instead of a blocklist
+
+# Ignore everything
+*
+
+# Allow files and folders with a pattern starting with!
+!Dockerfile
+!Makefile
+!Procfile
+!bin/*
+!exe/*
+!public/*

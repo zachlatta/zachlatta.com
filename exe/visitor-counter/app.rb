@@ -33,7 +33,7 @@ thr = Thread.new {
 
 get '/*' do
     # /https://zachlatta.co/asdf -> https://zachlatta.com/asdf
-    # 
+    #
     # removes leading / character added by sinatra
     path_requested = request.path_info[1..-1]
 
@@ -44,7 +44,7 @@ get '/*' do
     # to
     #
     #   https://zachlatta.com/visitor-counter/https:/zachlatta.com
-    # 
+    #
     # notice that removed / near the end of the second example. this hack fixes
     # that where it breaks the HTTP and HTTPS protocol section
     #

@@ -27,7 +27,7 @@ thr = Thread.new {
         File.open(db_path, 'w') { |file| file.write db.to_json }
         logger.info "Saved DB to #{db_path}"
 
-        sleep 5
+        sleep 30
     end
 }
 

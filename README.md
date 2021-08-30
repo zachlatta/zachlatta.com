@@ -23,12 +23,27 @@ To-dos:
 - [X] Get `public` app to fallback to files in `db/public/`
 - [X] Get GitHub Actions to build and push Docker image on push.
 - [X] Build dynamic page counter service
+- [ ] Show location of last visitor on homepage
 
-Future:
+Build a blog:
 
-- [ ] Automatically pull and restart Docker container on `slowking` after a push
+_Idea: Use Tailscale for authentication, instead of a user account. Network-level authentication._
+
+Improve development experience:
+
+- [ ] Speed up time-to-shell (current time for `make shell`: 26 seconds)
+- [ ] Automatic deployment of new Docker images
+- [ ] Figure out good way to manage nginx in background for reverse proxying
 
 ## Notes / For Future Reference
+
+The following secrets must be set in the environment for the website to function:
+
+```
+IPINFO_TOKEN=<secret for ipinfo.io>
+```
+
+---
 
 Every application reads a `$BASEDIR` variable that it bases all of its relative links on.
 

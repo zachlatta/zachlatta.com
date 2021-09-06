@@ -4,4 +4,5 @@ cd $BASEDIR
 
 mkdir -p db/ # create db/ in $BASEDIR if it doesn't exist
 
+rm overmind.sock # for some reason this file sometimes ends up showing up and causing the container to end up in an infinite loop
 overmind start --no-port

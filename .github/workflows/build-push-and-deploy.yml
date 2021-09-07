@@ -45,11 +45,7 @@ jobs:
       - name: Add deploy targets to /etc/hosts
         run: |
           echo "$(tailscale ip -6 slowking-nixos) slowking-nixos" | sudo tee -a /etc/hosts
-          sleep 1 # wtf
           echo "$(tailscale ip -6 relay) relay" | sudo tee -a /etc/hosts
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
 
       - name: Add SSH key
         id: ssh

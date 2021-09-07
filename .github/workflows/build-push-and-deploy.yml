@@ -58,6 +58,11 @@ jobs:
           printf "%s" "$SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
+      - name: Setup tmate session
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        uses: mxschmitt/action-tmate@v3
+
       - name: Install Nix
         uses: cachix/install-nix-action@v13
         with:

@@ -55,8 +55,8 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan slowking-nixos >> ~/.ssh/known_hosts
           ssh-keyscan relay >> ~/.ssh/known_hosts
-          printf "$s" "$SSH_KEY" > ~/.ssh/key
-          chmod 600 ~/.ssh/key
+          printf "$s" "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
 
       - name: Install Nix
         uses: cachix/install-nix-action@v13

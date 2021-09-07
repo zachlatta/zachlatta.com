@@ -15,26 +15,26 @@ jobs:
       - name: Checkout respository
         uses: actions/checkout@v2
 
-          #- name: Log into Docker Hub
-          #  uses: docker/login-action@v1
-          #  with:
-          #    username: ${{ secrets.DOCKERHUB_USERNAME }}
-          #    password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Log into Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-          #- name: Extract metadata (tags, labels) for Docker
-          #  id: meta
-          #  uses: docker/metadata-action@v3
-          #  with:
-          #    images: |
-          #      zachlatta/zachlatta.com
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            zachlatta/zachlatta.com
 
-          #- name: Build and push Docker images
-          #  uses: docker/build-push-action@v2
-          #  with:
-          #    context: .
-          #    push: true
-          #    tags: zachlatta/zachlatta.com:latest
-          #    labels: ${{ steps.meta.output.labels }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: zachlatta/zachlatta.com:latest
+          labels: ${{ steps.meta.output.labels }}
 
       - name: Setup Tailscale
         id: tailscale
@@ -62,9 +62,6 @@ jobs:
         uses: cachix/install-nix-action@v13
         with:
           nix_path: nixpkgs=channel:nixos-21.05
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
 
       - name: Deploy to NAS
         id: deploy

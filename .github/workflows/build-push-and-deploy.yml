@@ -46,7 +46,7 @@ jobs:
       - name: Add Tailscale deploy target to /etc/hosts
         run: |
           MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
-          sudo echo "$DEPLOY_MACHINE_HOSTNAME $MACHINE_IP" >> /etc/hosts
+          echo "$DEPLOY_MACHINE_HOSTNAME $MACHINE_IP" | sudo tee -a /etc/hosts
 
       - name: Add SSH key
         id: ssh

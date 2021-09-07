@@ -5,7 +5,7 @@ on:
     branches: ['master']
 
 jobs:
-  build-push-deply:
+  build-push-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read

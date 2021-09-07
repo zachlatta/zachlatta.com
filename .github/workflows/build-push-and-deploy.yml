@@ -67,7 +67,9 @@ jobs:
           go-version: '^1.16'
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v10
+        uses: cachix/install-nix-action@v13
+        with:
+          nix_path: nixpkgs=channel:nixos-12.05
 
       - name: Install Morph
         id: morph

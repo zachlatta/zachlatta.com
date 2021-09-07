@@ -41,7 +41,7 @@ jobs:
         uses: tailscale/tailscale-deploy-github@main
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-          version: 1.12.2
+          version: 1.14.0
 
       - name: Add SSH key
         id: ssh

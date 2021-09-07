@@ -21,11 +21,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Setup tmate session
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-        uses: mxschmitt/action-tmate@v3
-
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v3
@@ -60,8 +55,8 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan slowking-nixos >> ~/.ssh/known_hosts
           ssh-keyscan relay >> ~/.ssh/known_hosts
-          printf "$s" "$SSH_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          printf "%s" "$SSH_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
 
       - name: Install Nix
         uses: cachix/install-nix-action@v13

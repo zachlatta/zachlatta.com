@@ -42,9 +42,6 @@ jobs:
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Add Tailscale deploy target to /etc/hosts
         env:
           DEPLOY_MACHINE_HOSTNAME: ${{ secrets.DEPLOY_MACHINE_HOSTNAME }}

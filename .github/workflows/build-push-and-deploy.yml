@@ -48,9 +48,6 @@ jobs:
           sleep 1 # wtf
           echo "$(tailscale ip -6 relay) relay" | sudo tee -a /etc/hosts
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Add SSH key
         id: ssh
         env:

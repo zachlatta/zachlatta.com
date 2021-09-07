@@ -63,7 +63,7 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v13
         with:
-          nix_path: nixpkgs=channel:nixos-12.05
+          nix_path: nixpkgs=channel:nixos-21.05
 
       - name: Deploy to NAS
         id: deploy

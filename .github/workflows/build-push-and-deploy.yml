@@ -50,7 +50,7 @@ jobs:
           DEPLOY_MACHINE_HOSTNAME: ${{ secrets.DEPLOY_MACHINE_HOSTNAME }}
         run: |
           MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
-          echo "$DEPLOY_MACHINE_HOSTNAME $MACHINE_IP" | sudo tee -a /etc/hosts
+          echo "$MACHINE_IP $DEPLOY_MACHINE_HOSTNAME" | sudo tee -a /etc/hosts
 
       - name: Add SSH key
         id: ssh

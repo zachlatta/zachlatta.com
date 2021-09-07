@@ -42,21 +42,19 @@ jobs:
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-      - name: Add Tailscale deploy target to /etc/hosts
-        env:
-          DEPLOY_MACHINE_HOSTNAME: ${{ secrets.DEPLOY_MACHINE_HOSTNAME }}
+      - name: Add deploy targets to /etc/hosts
         run: |
-          MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
-          echo "$MACHINE_IP $DEPLOY_MACHINE_HOSTNAME" | sudo tee -a /etc/hosts
+          echo "$(tailscale ip -6 slowking-nixos) slowking-nixos" | sudo tee -a /etc/hosts
+          echo "$(tailscale ip -6 relay) relay" | sudo tee -a /etc/hosts
 
       - name: Add SSH key
         id: ssh
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
-          DEPLOY_MACHINE_HOSTNAME: ${{ secrets.DEPLOY_MACHINE_HOSTNAME }}
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan $DEPLOY_MACHINE_HOSTNAME >> ~/.ssh/known_hosts
+          ssh-keyscan slowking-nixos >> ~/.ssh/known_hosts
+          ssh-keyscan relay >> ~/.ssh/known_hosts
           printf "$s" "$SSH_KEY" > ~/.ssh/key
           chmod 600 ~/.ssh/key
 

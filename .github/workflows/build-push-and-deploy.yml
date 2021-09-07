@@ -38,10 +38,9 @@ jobs:
 
       - name: Setup Tailscale
         id: tailscale
-        uses: tailscale/tailscale-deploy-github@main
+        uses: tailscale/github-action@v1
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-          version: 1.7.359
 
       - name: Add Tailscale deploy target to /etc/hosts
         env:

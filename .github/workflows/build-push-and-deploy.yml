@@ -47,6 +47,9 @@ jobs:
           echo "$(tailscale ip -6 slowking-nixos) slowking-nixos" | sudo tee -a /etc/hosts
           echo "$(tailscale ip -6 relay) relay" | sudo tee -a /etc/hosts
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       - name: Add SSH key
         id: ssh
         env:

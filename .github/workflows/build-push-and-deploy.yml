@@ -43,14 +43,18 @@ jobs:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
           version: 1.14.0
 
+      - name: Add Tailscale deploy target to /etc/hosts
+        run: |
+          MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
+          echo "$DEPLOY_MACHINE_HOSTNAME $MACHINE_IP" >> /etc/hots
+
       - name: Add SSH key
         id: ssh
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
-          ssh-keyscan $MACHINE_IP >> ~/.ssh/known_hosts
+          ssh-keyscan $DEPLOY_MACHIEN_HOSTNAME >> ~/.ssh/known_hosts
           printf "$s" "$SSH_KEY" > ~/.ssh/key
           chmod 600 ~/.ssh/key
 
@@ -62,12 +66,10 @@ jobs:
 
       - name: Install Morph
         id: morph
-        env:
-          MORPH_VERSION: 1.6.0
         run: |
           pushd /tmp
 
-          curl https://github.com/DBCDK/morph/archive/refs/tags/v"$MORPH_VERSION".tar.gz > morph.tar.gz
+          curl https://github.com/DBCDK/morph/archive/refs/tags/v1.6.0.tar.gz > morph.tar.gz
           tar xzf morph.tar.gz
           mv morph* morph
           cd morph
@@ -78,6 +80,12 @@ jobs:
       - name: Deploy
         id: deploy
         run: |
-          cd slowking-nixos/
+          pushd /tmp
+
+          git clone https://github.com/zachlatta/nixos-configs
+          cd nixos-configs/slowking-nixos/
+
           ./deploy
+
+          popd
 

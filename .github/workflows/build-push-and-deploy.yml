@@ -73,7 +73,7 @@ jobs:
 
           curl https://codeload.github.com/DBCDK/morph/tar.gz/refs/tags/v1.6.0 > morph.tar.gz
           tar xzf morph.tar.gz
-          mv morph* morph
+          mv morph-* morph
           cd morph
           go install
 

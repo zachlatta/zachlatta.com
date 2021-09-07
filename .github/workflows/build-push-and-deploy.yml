@@ -1,0 +1,83 @@
+name: Build, push, and deploy
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build-push-deply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v2
+
+      - name: Log into Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            zachlatta/zachlatta.com
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: zachlatta/zachlatta.com:latest
+          labels: ${{ steps.meta.output.labels }}
+
+      - name: Setup Tailscale
+        id: tailscale
+        uses: tailscale/tailscale-deploy-github@main
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          version: 1.12.2
+
+      - name: Add SSH key
+        id: ssh
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        run: |
+          mkdir -p +/.ssh
+          MACHINE_IP="$(tailscale ip -6 $DEPLOY_MACHINE_HOSTNAME)"
+          ssh-keyscan $DEPLOY_MACHINE_HOSTNAME >> ~/.ssh/known_hosts
+          printf "$s" "$SSH_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+
+      - name: Setup Go
+        id: go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.16'
+
+      - name: Install Morph
+        id: morph
+        env:
+          MORPH_VERSION: 1.6.0
+        run: |
+          pushd /tmp
+
+          curl https://github.com/DBCDK/morph/archive/refs/tags/v"$MORPH_VERSION".tar.gz > morph.tar.gz
+          tar xzf morph.tar.gz
+          mv morph* morph
+          cd morph
+          go install
+
+          popd
+
+      - name: Deploy
+        id: deploy
+        run: |
+          cd slowking-nixos/
+          ./deploy
+

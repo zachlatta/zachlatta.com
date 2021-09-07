@@ -41,7 +41,7 @@ jobs:
         uses: tailscale/tailscale-deploy-github@main
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-          version: 1.14.0
+          version: 1.7.359
 
       - name: Add Tailscale deploy target to /etc/hosts
         run: |

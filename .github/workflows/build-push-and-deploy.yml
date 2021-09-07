@@ -71,7 +71,7 @@ jobs:
         run: |
           pushd /tmp
 
-          curl https://github.com/DBCDK/morph/archive/refs/tags/v1.6.0.tar.gz > morph.tar.gz
+          curl https://codeload.github.com/DBCDK/morph/tar.gz/refs/tags/v1.6.0 > morph.tar.gz
           tar xzf morph.tar.gz
           mv morph* morph
           cd morph

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+trap 'overmind quit; exit 0' SIGTERM
+
 cd $BASEDIR
 
 mkdir -p db/ # create db/ in $BASEDIR if it doesn't exist

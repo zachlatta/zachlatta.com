@@ -63,5 +63,11 @@ get '/*' do
     db[url_to_log] ||= 0
     db[url_to_log] += 1
 
-    db[url_to_log].to_s
+    format_number(db[url_to_log])
+end
+
+# 1234567 -> 1,234,567
+def format_number(number)
+    num_groups = number.to_s.chars.to_a.reverse.each_slice(3)
+    num_groups.map(&:join).join(',').reverse
 end

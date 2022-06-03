@@ -1,3 +1,11 @@
+How to run:
+
+    $ make run
+
+Then go to localhost:1337
+
+---
+
 Design goals:
 
 - Feeling of being self-hosted and handmade, like Cliff Stoll's website
@@ -9,28 +17,7 @@ Design goals:
 
 Ideas:
 
-```
-public/<files in repo alongside files on NAS>
-db/
-/<app folders>
-ROUTES<mapping and runtimes specified>
-```
-
-To-dos:
-
-- [X] Get Docker container running on `slowking`
-- [X] Expose running instance on `slowking` on the public web
-- [X] Get `public` app to fallback to files in `db/public/`
-- [X] Get GitHub Actions to build and push Docker image on push.
-- [X] Build dynamic page counter service
 - [ ] Show location of last visitor on homepage
-
-Build a blog:
-
-_Idea: Use Tailscale for authentication, instead of a user account. Network-level authentication._
-
-Improve development experience:
-
 - [ ] Speed up time-to-shell (current time for `make shell`: 26 seconds)
 - [ ] Automatic deployment of new Docker images
 - [ ] Figure out good way to manage nginx in background for reverse proxying

@@ -21,6 +21,7 @@ export async function getStaticProps({ params }) {
 export default function Entry({ entryData }) {
     return (
         <>
+            <h1>{entryData.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: entryData.contentHtml }} />
         </>
     )

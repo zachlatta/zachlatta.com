@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 # Copy files from MD_SRC to MD_DEST, filtering only for files with KEYWORD in
 # them
 
-MD_SRC=$HOME/pokedex-synced/txt/obsidian
-MD_DEST=$HOME/dev/zachlatta.com/tmp/public-notes
+MD_SRC="${MD_SRC:-$HOME/pokedex-synced/txt/obsidian}"
+MD_DEST="${MD_DEST:-$HOME/dev/zachlatta.com/tmp/public-notes}"
 KEYWORD="#public"
 
 ## FIRE UP THE ENGINES ##

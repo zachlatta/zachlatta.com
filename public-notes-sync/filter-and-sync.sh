@@ -5,9 +5,22 @@ MD_SRC=$HOME/pokedex-synced/txt/obsidian
 MD_DEST=$HOME/dev/zachlatta.com/tmp/public-notes
 KEYWORD="#public"
 
+## FIRE UP THE ENGINES ##
+
+echo "##############################"
+echo "# WELCOME TO FILTER AND SYNC #"
+echo "#                            #"
+echo "# the ~premiere~ markdown    #"
+echo "# filtering and syncing      #"
+echo "# solution                   #"
+echo "##############################"
+echo
+echo "Date: `TZ=America/New_York date`"
+echo
+
 ## set up folder and git repo in destination if needed ##
 
-if [ ! -d "$MD_DEST " ]; then
+if [ ! -d "$MD_DEST" ]; then
     echo "no folder at $MD_DEST - creating one!"
     mkdir -p "$MD_DEST"
 fi

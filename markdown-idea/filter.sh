@@ -75,7 +75,7 @@ do
     # if file doesn't start with ---, then add empty frontmatter!
     if [ ! -d "$newfile" ]; then
         if [[ ! $(sed -n '1{/^---/p};q' "$newfile") ]]; then
-            sed -i '1s/^/---\n---/' "$newfile"
+            sed -i '1s/^/---\n---\n/' "$newfile"
         fi
 
         yq --front-matter="process" ".title = \"$title\"" -i "$newfile"

@@ -1,3 +1,6 @@
+# Copy files from MD_SRC to MD_DEST, filtering only for files with KEYWORD in
+# them
+
 MD_SRC=$HOME/pokedex-synced/txt/obsidian
 MD_DEST=$HOME/dev/zachlatta.com/tmp/public-notes
 KEYWORD="#public"

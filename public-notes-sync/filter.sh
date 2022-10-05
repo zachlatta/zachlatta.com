@@ -1,8 +1,13 @@
 MD_SRC=$HOME/pokedex-synced/txt/obsidian
-MD_DEST=$HOME/dev/zachlatta.com/markdown-idea/dest
+MD_DEST=$HOME/dev/zachlatta.com/tmp/public-notes
 KEYWORD="#public"
 
-## set up git repo in destination if needed ##
+## set up folder and git repo in destination if needed ##
+
+if [ ! -d "$MD_DEST " ]; then
+    echo "no folder at $MD_DEST - creating one!"
+    mkdir -p "$MD_DEST"
+fi
 
 if [ ! -d "$MD_DEST/.git" ]; then
     echo "git repo not initialized in $MD_DEST, initializing!"

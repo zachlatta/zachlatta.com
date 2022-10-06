@@ -1,3 +1,4 @@
+# build and push public-notes-sync image to Docker
 name: public-notes-sync Docker image
 
 on:

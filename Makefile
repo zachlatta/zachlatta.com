@@ -1,5 +1,8 @@
 build:
-	docker build -t zachlatta/public-notes-sync public-notes-sync/
+	docker build -t zachlatta/public-notes-sync:latest public-notes-sync/
+
+push: build
+	docker push zachlatta/public-notes-sync:latest
 
 test: build
 	docker run --rm -it \

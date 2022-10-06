@@ -1,3 +1,1 @@
-db/
-.env
-.vscode/settings.json
+tmp/

@@ -1,33 +1,18 @@
-IMAGE=zachlatta/zachlatta.com
+build:
+	docker build -t zachlatta/public-notes-sync:latest public-notes-sync/
 
-.PHONY: build
-build: Dockerfile
-	docker build -t $(IMAGE) .
-
-.PHONY: push
 push: build
-	docker push $(IMAGE)
+	docker push zachlatta/public-notes-sync:latest
 
-.PHONY: shell
-shell: build
-	docker run -it --rm \
-		--volume $(PWD):/zachlatta.com \
-		-p 1337:80 \
-		--entrypoint /bin/sh \
-		$(IMAGE)
+test: build
+	docker run --rm -it \
+		-v ${HOME}/pokedex-synced/txt/obsidian:/md_src \
+		-v ${HOME}/dev/zachlatta.com/tmp/public-notes:/md_dest \
+		zachlatta/public-notes-sync \
+		/bin/bash
 
-.PHONY: run
 run: build
-	docker run -it --rm \
-		--volume $(PWD)/db:/zachlatta.com/db \
-		-p 1337:80 \
-		$(IMAGE)
-
-.PHONY: run-dev
-run-dev: build
-	docker run -it --rm \
-		--volume $(PWD):/zachlatta.com \
-		-p 1337:80 \
-		$(IMAGE)
-
-default: build
+	docker run --rm -it \
+		-v ${HOME}/pokedex-synced/txt/obsidian:/md_src \
+		-v ${HOME}/dev/zachlatta.com/tmp/public-notes:/md_dest \
+		zachlatta/public-notes-sync

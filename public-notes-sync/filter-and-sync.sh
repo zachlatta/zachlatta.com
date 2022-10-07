@@ -5,6 +5,8 @@
 
 MD_SRC="${MD_SRC:-$HOME/pokedex-synced/txt/obsidian}"
 MD_DEST="${MD_DEST:-$HOME/dev/zachlatta.com/tmp/public-notes}"
+GIT_REMOTE="${GIT_REMOTE:-git@github.com:zachlatta/public-notes-test}"
+GIT_SSH_KEY_PATH="${GIT_SSH_KEY_PATH:-SET ME TO A SSH KEY PATH FOR GIT_REMOTE}"
 KEYWORD="#public"
 
 ## FIRE UP THE ENGINES ##
@@ -117,4 +119,13 @@ popd > /dev/null
 pushd "$MD_DEST" > /dev/null
 git add .
 git commit -m "update with latest changes"
+
+if [ -f "$GIT_SSH_KEY_PATH" ]; then
+    eval "$(ssh-agent -s)"
+    ssh-add "$GIT_SSH_KEY_PATH"
+fi
+
+# push to the current git branch to GIT_REMOTE
+git push "$GIT_REMOTE" "`git rev-parse --abbrev-ref HEAD`"
+
 popd > /dev/null

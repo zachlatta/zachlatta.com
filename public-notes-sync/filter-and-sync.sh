@@ -125,7 +125,9 @@ if [ -f "$GIT_SSH_KEY_PATH" ]; then
     ssh-add "$GIT_SSH_KEY_PATH"
 fi
 
-# push to the current git branch to GIT_REMOTE
-git push "$GIT_REMOTE" "`git rev-parse --abbrev-ref HEAD`"
+# push to the current git branch to GIT_REMOTE. we have to disable strict host
+# checking because on a docker image, it won't previously have seen whatever
+# host the GIT_REMOTE is at
+GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push "$GIT_REMOTE" "`git rev-parse --abbrev-ref HEAD`"
 
 popd > /dev/null

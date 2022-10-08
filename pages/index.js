@@ -10,8 +10,8 @@ export default function Home({ allEntryIDs }) {
         <title>Zach Latta</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <main>
+        <h1>
           Welcome to my homepage!
         </h1>
       </main>

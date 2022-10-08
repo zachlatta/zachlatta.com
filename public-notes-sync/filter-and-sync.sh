@@ -118,7 +118,7 @@ popd > /dev/null
 
 pushd "$MD_DEST" > /dev/null
 git add .
-git commit -m "update with latest changes"
+git commit -m "(automated) update with latest changes"
 
 if [ -f "$GIT_SSH_KEY_PATH" ]; then
     eval "$(ssh-agent -s)"

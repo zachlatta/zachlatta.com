@@ -12,9 +12,20 @@ export default function Home({ allEntryIDs }) {
 
       <main>
         <h1>
-          Welcome to my homepage!
+          Zach Latta
         </h1>
+        <p>
+          these days i'm living in vermont. coding profoundly changed my life,
+          and i'm trying to help more teenagers have that same experience.
+        </p>
+
+        <p>
+          beyond hack club, i enjoy reading, making computer projects, and deep
+          conversations.
+        </p>
       </main>
+
+      <p>read posts:</p>
 
       {allEntryIDs.map((params) => (
         <li key={params.params.entry}>

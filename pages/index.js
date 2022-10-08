@@ -4,12 +4,12 @@ import { getAllNoteIDs } from '../lib/notes'
 
 export default function Home({ allEntryIDs }) {
   return (
-    <div class="container max-w-4xl mt-12 mx-auto space-y-1">
+    <div className="container max-w-4xl mt-12 mx-auto space-y-1">
       <Head>
         <title>Zach Latta</title>
       </Head>
 
-      <h1 class="font-medium leading-tight text-2xl mt-0 mb-2">
+      <h1 className="font-medium leading-tight text-2xl mt-0 mb-2">
         Zach Latta
       </h1>
       <p>
@@ -24,11 +24,11 @@ export default function Home({ allEntryIDs }) {
 
       <p>read posts:</p>
 
-      <ul class="list-disc list-inside">
+      <ul className="list-disc list-inside">
         {allEntryIDs.map((params) => (
           <li key={params.params.note}>
             <Link href={`/${params.params.note}`}>
-              <a class="underline hover:decoration-dashed">{params.params.note}</a>
+              <a className="underline hover:decoration-dashed">{params.params.note}</a>
             </Link>
           </li>
         ))}

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Increase default font size globally */
+html {
+    font-size: 18px;
+}

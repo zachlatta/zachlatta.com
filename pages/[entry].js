@@ -1,7 +1,7 @@
 import { getAllEntryIds, getEntryData } from '../lib/entries'
 
 export async function getStaticPaths() {
-    const paths = getAllEntryIds()
+    const paths = await getAllEntryIds()
 
     return {
         paths,

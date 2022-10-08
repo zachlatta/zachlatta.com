@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { getAllEntryIds } from '../lib/entries'
+import { getAllNoteIDs } from '../lib/notes'
 
 export default function Home({ allEntryIDs }) {
   return (
@@ -27,9 +27,9 @@ export default function Home({ allEntryIDs }) {
       <p>read posts:</p>
 
       {allEntryIDs.map((params) => (
-        <li key={params.params.entry}>
-          <Link href={`/${params.params.entry}`}>
-            <a>{params.params.entry}</a>
+        <li key={params.params.note}>
+          <Link href={`/${params.params.note}`}>
+            <a>{params.params.note}</a>
           </Link>
         </li>
       ))}
@@ -39,7 +39,7 @@ export default function Home({ allEntryIDs }) {
 }
 
 export async function getStaticProps() {
-  const allEntryIDs = await getAllEntryIds()
+  const allEntryIDs = await getAllNoteIDs()
 
   return {
     props: {

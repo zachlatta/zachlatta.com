@@ -24,7 +24,7 @@ export default function Note({ entryData: noteData }) {
     return (
         <>
             <h1>{noteData.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: noteData.contentHtml }} />
+            <div class="prose" dangerouslySetInnerHTML={{ __html: noteData.contentHtml }} />
         </>
     )
 }

@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
 import { getAllEntryIds } from '../lib/entries'
 
 export default function Home({ allEntryIDs }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Zach Latta</title>
       </Head>

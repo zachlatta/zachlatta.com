@@ -9,3 +9,4 @@ To do:
 - [ ] Sort list of posts by edit time
 - [ ] Show publish time of post
 - [ ] Show most recent edit time of post
+- [ ] Make sure it works for posts in subfolders, and sub-sub(and sub-sub-sub...) folders

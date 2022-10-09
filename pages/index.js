@@ -4,7 +4,7 @@ import { getAllNoteIDs } from '../lib/notes'
 
 export default function Home({ allEntryIDs }) {
   return (
-    <div className="container max-w-4xl mt-12 mx-auto space-y-1">
+    <div className="container px-16 mt-8 mx-auto space-y-1">
       <Head>
         <title>Zach Latta</title>
       </Head>

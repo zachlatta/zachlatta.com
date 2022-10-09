@@ -1,3 +1,6 @@
+import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { getAllNoteIDs, getNoteData } from '../lib/notes'
 
 export async function getStaticPaths() {
@@ -21,11 +24,27 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default function Note({ entryData: noteData }) {
+export default function Note({ entryData: note }) {
+    const { asPath } = useRouter()
+
     return (
         <>
-            <h1>{noteData.title}</h1>
-            <div className="prose" dangerouslySetInnerHTML={{ __html: noteData.contentHtml }} />
+            <Head>
+                <title>{note.title} | Zach Latta</title>
+            </Head>
+            <div className="container px-16 mt-8 mx-auto">
+                <Link href="/">
+                    <a className="italic">Root</a>
+                </Link>
+                {" -> "}
+                <Link href={asPath}>
+                    <a className="italic font-semibold">{note.title}</a>
+                </Link>
+
+                <hr className="my-2"></hr>
+
+                <div className="prose space-y-1 prose-h1:text-2xl" dangerouslySetInnerHTML={{ __html: note.contentHtml }} />
+            </div>
         </>
     )
 }

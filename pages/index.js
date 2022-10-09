@@ -44,6 +44,7 @@ export async function getStaticProps() {
   return {
     props: {
       allEntryIDs
-    }
+    },
+    revalidate: 60,
   }
 }

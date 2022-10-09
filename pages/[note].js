@@ -34,7 +34,7 @@ export default function Note({ entryData: note }) {
             </Head>
             <div className="container px-16 mt-8 mx-auto">
                 <Link href="/">
-                    <a className="italic">Root</a>
+                    <a className="italic">Zach Latta</a>
                 </Link>
                 {" -> "}
                 <Link href={asPath}>

@@ -1,30 +1,46 @@
+import { ApiError } from 'next/dist/server/api-utils'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { getAllNoteIDs, getNoteData } from '../lib/notes'
+import { getAllNotes, cache } from '../lib/notes'
 
 export async function getStaticPaths() {
-    const paths = await getAllNoteIDs()
+    const notes = await getAllNotes()
 
-    console.log(paths)
+    console.log(notes)
+
+    await cache.set(notes)
 
     return {
-        paths,
+        paths: notes.map(note => {
+            return {
+                params: {
+                    note: note.name.replace(/\.md$/, '')
+                }
+            }
+        }),
         fallback: false
     }
 }
 
 export async function getStaticProps({ params }) {
-    const entryData = await getNoteData(params.note)
+    let notes = await cache.get()
+
+    if (!notes) {
+        notes = await getAllNotes()
+    }
+
+    let note = notes.find(note => note.name == params.note + '.md')
+
     return {
         props: {
-            entryData,
+            note,
         },
         revalidate: 60
     }
 }
 
-export default function Note({ entryData: note }) {
+export default function Note({ note }) {
     const { asPath } = useRouter()
 
     return (

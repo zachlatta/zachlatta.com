@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { getAllNoteIDs } from '../lib/notes'
+import { getAllNotes, cache } from '../lib/notes'
 
-export default function Home({ allEntryIDs }) {
+export default function Home({ notes }) {
   return (
     <div className="container px-16 mt-8 mx-auto space-y-1">
       <Head>
@@ -25,10 +25,10 @@ export default function Home({ allEntryIDs }) {
       <p>read posts:</p>
 
       <ul className="list-disc list-inside">
-        {allEntryIDs.map((params) => (
-          <li key={params.params.note}>
-            <Link href={`/${params.params.note}`}>
-              <a className="underline hover:decoration-dashed">{params.params.note}</a>
+        {notes.map((note) => (
+          <li key={note.path}>
+            <Link href={`/${note.path}`}>
+              <a className="underline hover:decoration-dashed">{note.title}</a>
             </Link>
           </li>
         ))}
@@ -39,11 +39,20 @@ export default function Home({ allEntryIDs }) {
 }
 
 export async function getStaticProps() {
-  const allEntryIDs = await getAllNoteIDs()
+  let notes = await cache.get()
+
+  if (!notes) {
+    notes = await getAllNotes()
+  }
 
   return {
     props: {
-      allEntryIDs
+      notes: notes.map(note => {
+        return {
+          path: note.name.replace(/\.md$/, ''),
+          title: note.title
+        }
+      }),
     },
     revalidate: 60,
   }

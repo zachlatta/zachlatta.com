@@ -46,7 +46,7 @@ export default function Note({ note }) {
     return (
         <>
             <Head>
-                <title>{note.title} | Zach Latta</title>
+                <title>{`${note.title} | Zach Latta`}</title>
             </Head>
             <div className="container px-16 mt-8 mx-auto">
                 <Link href="/">

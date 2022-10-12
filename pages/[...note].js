@@ -7,15 +7,13 @@ import { getAllNotes, cache } from '../lib/notes'
 export async function getStaticPaths() {
     const notes = await getAllNotes()
 
-    console.log(notes)
-
     await cache.set(notes)
 
     return {
         paths: notes.map(note => {
             return {
                 params: {
-                    note: note.name.replace(/\.md$/, '')
+                    note: note.name.replace(/\.md$/, '').split('/')
                 }
             }
         }),
@@ -24,13 +22,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+    console.log(params)
+    // if the requested note is in a subfolder, nextjs will send us each folder
+    // as an object in an array. convert them into a single path
+    let requestedPath = params.note.join("/")
     let notes = await cache.get()
 
     if (!notes) {
         notes = await getAllNotes()
     }
 
-    let note = notes.find(note => note.name == params.note + '.md')
+    let note = notes.find(note => note.name == requestedPath + '.md')
 
     return {
         props: {

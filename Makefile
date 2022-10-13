@@ -10,6 +10,7 @@ test: build
 		-v ${HOME}/dev/zachlatta.com/tmp/public-notes:/md_dest \
 		-v ${HOME}/dev/zachlatta.com/tmp/ssh-key:/ssh_key \
 		-e GIT_SSH_KEY_PATH=/ssh_key/ssh_key \
+		-e NOPUSH=yes \
 		zachlatta/public-notes-sync \
 		/bin/bash
 
@@ -19,4 +20,5 @@ run: build
 		-v ${HOME}/dev/zachlatta.com/tmp/public-notes:/md_dest \
 		-v ${HOME}/dev/zachlatta.com/tmp/ssh-key:/ssh_key \
 		-e GIT_SSH_KEY_PATH=/ssh_key/ssh_key \
+		-e NOPUSH=yes \
 		zachlatta/public-notes-sync

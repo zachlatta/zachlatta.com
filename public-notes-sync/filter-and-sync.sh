@@ -37,6 +37,12 @@ if [ ! -d "$MD_DEST/.git" ]; then
     popd > /dev/null
 fi
 
+# temporarily copy $MD_DEST into a temp folder so we can run git operations on
+# it while the new version of the git repo is contructed during the script (used
+# for things like getting last file modified time)
+gitCopyTmp="$(mktemp --directory --dry-run)"
+cp -R "$MD_DEST" "$gitCopyTmp"
+
 ## copy all files and folders that match KEYWORD into dest ##
 
 MATCHING_FILES=$(grep "$KEYWORD" "$MD_SRC" --exclude-dir='.*' -lR)
@@ -76,11 +82,12 @@ tmp="$(mktemp --directory)"
 while IFS= read -r file
 do
     title=$(basename "$file" | sed 's/\.md$//')
-    newfile=$(echo "$file" |
+    relNewFile=$(echo "$file" |
         sed -e 's/\.md$//' \
             -e 's/.*/\L&/g' \
             -e '/[[:punct:]]*/{ s/[^[:alnum:][:space:]\/]//g}' \
-            -e 's/ \+/-/g'
+            -e 's/ \+/-/g' \
+            -e 's/^\///'
     )
     ext=""
 
@@ -89,13 +96,21 @@ do
         ext=".${file##*.}"
     fi
 
-    newfile="$tmp/${newfile}${ext}"
+    newfile="$tmp/${relNewFile}${ext}"
 
     # if directory, create directory. if file, copy file
     if [ -d "$file" ]; then
         mkdir -v "$newfile"
     else
         cp -v -- "$file" "$newfile"
+    fi
+
+    # format:%cI means the commit date in iso8601 format. silence errors that would emit if the file doesn't exist
+    lastModified=$(cd "$gitCopyTmp"; git log -1 --pretty="format:%cI" "${relNewFile}${ext}" 2> /dev/null)
+
+    # if lastModified is empty (which would be the case if this is a new file), then set it to the current date in iso8601 format
+    if [ -z "${lastModified}" ]; then
+        lastModified=$(date +"%Y-%m-%dT%H:%M:%S%:z")
     fi
 
     # if file doesn't start with ---, then add empty frontmatter!
@@ -105,6 +120,7 @@ do
         fi
 
         yq --front-matter="process" ".title = \"$title\"" -i "$newfile"
+        yq --front-matter="process" ".lastModified = \"$lastModified\"" -i "$newfile"
     fi
 done <<< "$(find . -mindepth 1 -not -path '*/.*')"
 
@@ -114,6 +130,9 @@ cp -R $tmp/* .
 rm -rf $tmp
 
 popd > /dev/null
+
+# remove copy of git repo used for git operations
+rm -rf "$gitCopyTmp"
 
 ## commit! ##
 

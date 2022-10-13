@@ -5,7 +5,11 @@ import { useRouter } from 'next/router'
 import { getAllNotes, cache } from '../lib/notes'
 
 export async function getStaticPaths() {
-    const notes = await getAllNotes()
+    let notes = await cache.get()
+
+    if (!notes) {
+        notes = await getAllNotes()
+    }
 
     await cache.set(notes)
 
@@ -22,7 +26,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log(params)
     // if the requested note is in a subfolder, nextjs will send us each folder
     // as an object in an array. convert them into a single path
     let requestedPath = params.note.join("/")

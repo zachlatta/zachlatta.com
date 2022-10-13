@@ -10,3 +10,7 @@ To do:
 - [ ] Show publish time of post
 - [ ] Show most recent edit time of post
 - [ ] Make sure it works for posts in subfolders, and sub-sub(and sub-sub-sub...) folders
+
+## Caching
+
+Note: You need to delete `tmp/notes.json` to clear the cache. It will only fetch the notes DB once in many cases.

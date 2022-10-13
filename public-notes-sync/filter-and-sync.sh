@@ -5,7 +5,7 @@
 
 MD_SRC="${MD_SRC:-$HOME/pokedex-synced/txt/obsidian}"
 MD_DEST="${MD_DEST:-$HOME/dev/zachlatta.com/tmp/public-notes}"
-NOPUSH="${NOPUSH:}" # set this to "yes" if you don't want the script to push
+NOPUSH="${NOPUSH}" # set this to "yes" if you don't want the script to push
 GIT_REMOTE="${GIT_REMOTE:-git@github.com:zachlatta/public-notes-test}"
 GIT_SSH_KEY_PATH="${GIT_SSH_KEY_PATH:-SET ME TO A SSH KEY PATH FOR GIT_REMOTE}"
 KEYWORD="#public"

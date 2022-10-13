@@ -1,6 +1,6 @@
 FROM alpine:3.16
 
-RUN apk add --no-cache bash grep coreutils sed yq>4.26 git openssh
+RUN apk add --no-cache bash grep coreutils sed yq>4.26 git openssh jq
 
 # Mount Obsidian repo here
 VOLUME /md_dest

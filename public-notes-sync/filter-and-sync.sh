@@ -111,6 +111,9 @@ do
     # get the last modified date from file metadata in iso8601
     modifiedDate=$(date -r "$MD_SRC/$file" +"%Y-%m-%dT%H:%M:%S%:z")
 
+    # json array of previous names the file had in the repo (following renames), for redirects                 # remove empty lines and current file path          # json array
+    previousPaths=$(cd "$gitCopyTmp"; git log --pretty=format:"" --name-only --follow -- "${relNewFile}${ext}" | grep . | grep -v "${relNewFile}${ext}" | sort -u | jq -Rnc '[inputs]')
+
     if [ -z "$createdDate" ]; then
         createdDate=$(date +"%Y-%m-%dT%H:%M:%S%:z") # iso8601!
     fi
@@ -124,6 +127,7 @@ do
         yq --front-matter="process" ".title = \"$title\"" -i "$newfile"
         yq --front-matter="process" ".created = \"$createdDate\"" -i "$newfile"
         yq --front-matter="process" ".modified = \"$modifiedDate\"" -i "$newfile"
+        yq --front-matter="process" ".previousPaths += $previousPaths" -i "$newfile"
     fi
 done <<< "$(find . -mindepth 1 -not -path '*/.*')"
 

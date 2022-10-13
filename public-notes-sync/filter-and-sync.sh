@@ -105,8 +105,15 @@ do
         cp -v -- "$file" "$newfile"
     fi
 
-    # format:%cI means the commit date in iso8601 format. silence errors that would emit if the file doesn't exist
-    lastModified=$(date -r "$MD_SRC/$file" +"%Y-%m-%dT%H:%M:%S%:z")
+    # get the created date from git. %aI returns the author date in iso8601
+    createdDate=$(cd "$gitCopyTmp"; git log --diff-filter=A --follow --format=%aI -1 -- "${relNewFile}${ext}")
+
+    # get the last modified date from file metadata in iso8601
+    modifiedDate=$(date -r "$MD_SRC/$file" +"%Y-%m-%dT%H:%M:%S%:z")
+
+    if [ -z "$createdDate" ]; then
+        createdDate=$(date +"%Y-%m-%dT%H:%M:%S%:z") # iso8601!
+    fi
 
     # if file doesn't start with ---, then add empty frontmatter!
     if [ ! -d "$newfile" ]; then
@@ -115,7 +122,8 @@ do
         fi
 
         yq --front-matter="process" ".title = \"$title\"" -i "$newfile"
-        yq --front-matter="process" ".lastModified = \"$lastModified\"" -i "$newfile"
+        yq --front-matter="process" ".created = \"$createdDate\"" -i "$newfile"
+        yq --front-matter="process" ".modified = \"$modifiedDate\"" -i "$newfile"
     fi
 done <<< "$(find . -mindepth 1 -not -path '*/.*')"
 

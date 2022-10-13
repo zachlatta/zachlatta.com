@@ -5,6 +5,7 @@
 
 MD_SRC="${MD_SRC:-$HOME/pokedex-synced/txt/obsidian}"
 MD_DEST="${MD_DEST:-$HOME/dev/zachlatta.com/tmp/public-notes}"
+NOPUSH="${NOPUSH:}" # set this to "yes" if you don't want the script to push
 GIT_REMOTE="${GIT_REMOTE:-git@github.com:zachlatta/public-notes-test}"
 GIT_SSH_KEY_PATH="${GIT_SSH_KEY_PATH:-SET ME TO A SSH KEY PATH FOR GIT_REMOTE}"
 KEYWORD="#public"
@@ -120,14 +121,19 @@ pushd "$MD_DEST" > /dev/null
 git add .
 git commit -m "(automated) update with latest changes"
 
-if [ -f "$GIT_SSH_KEY_PATH" ]; then
-    eval "$(ssh-agent -s)"
-    ssh-add "$GIT_SSH_KEY_PATH"
-fi
+# if NOPUSH is not set, then push
+if [ "$NOPUSH" = "yes" ]; then
+    echo "NOPUSH is set, skipping git push"
+else
+    if [ -f "$GIT_SSH_KEY_PATH" ]; then
+        eval "$(ssh-agent -s)"
+        ssh-add "$GIT_SSH_KEY_PATH"
+    fi
 
-# push to the current git branch to GIT_REMOTE. we have to disable strict host
-# checking because on a docker image, it won't previously have seen whatever
-# host the GIT_REMOTE is at
-GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push "$GIT_REMOTE" "`git rev-parse --abbrev-ref HEAD`"
+    # push to the current git branch to GIT_REMOTE. we have to disable strict host
+    # checking because on a docker image, it won't previously have seen whatever
+    # host the GIT_REMOTE is at
+    GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push "$GIT_REMOTE" "`git rev-parse --abbrev-ref HEAD`"
+fi
 
 popd > /dev/null

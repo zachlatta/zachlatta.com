@@ -106,12 +106,7 @@ do
     fi
 
     # format:%cI means the commit date in iso8601 format. silence errors that would emit if the file doesn't exist
-    lastModified=$(cd "$gitCopyTmp"; git log -1 --pretty="format:%cI" "${relNewFile}${ext}" 2> /dev/null)
-
-    # if lastModified is empty (which would be the case if this is a new file), then set it to the current date in iso8601 format
-    if [ -z "${lastModified}" ]; then
-        lastModified=$(date +"%Y-%m-%dT%H:%M:%S%:z")
-    fi
+    lastModified=$(date -r "$MD_SRC/$file" +"%Y-%m-%dT%H:%M:%S%:z")
 
     # if file doesn't start with ---, then add empty frontmatter!
     if [ ! -d "$newfile" ]; then

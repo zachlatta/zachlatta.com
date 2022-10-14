@@ -6,10 +6,14 @@ Design goals:
 
 To do:
 
-- [ ] Sort list of posts by edit time
-- [ ] Show publish time of post
-- [ ] Show most recent edit time of post
-- [ ] Make sure it works for posts in subfolders, and sub-sub(and sub-sub-sub...) folders
+- [ ] Image support in notes
+- [ ] Tree view of files
+- [ ] Actually start using the site and see how it feels!
+
+- [x] Sort list of posts by edit time
+- [x] Show publish time of post
+- [x] Show most recent edit time of post
+- [x] Make sure it works for posts in subfolders, and sub-sub(and sub-sub-sub...) folders
 
 ## Caching
 

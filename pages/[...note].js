@@ -2,6 +2,7 @@ import { ApiError } from 'next/dist/server/api-utils'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { format } from 'timeago.js'
 import { getAllNotes, cache } from '../lib/notes'
 
 export async function getStaticPaths() {
@@ -65,6 +66,8 @@ export default function Note({ note }) {
                 <hr className="my-2"></hr>
 
                 <div className="prose space-y-1 prose-h1:text-2xl" dangerouslySetInnerHTML={{ __html: note.contentHtml }} />
+
+                <p className="text-xs italic mt-3">Edited {format(note.modified)}. Created {format(note.created)}.</p>
             </div>
         </>
     )

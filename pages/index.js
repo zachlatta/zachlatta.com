@@ -1,10 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { format } from 'timeago.js'
 import { getAllNotes, cache } from '../lib/notes'
 
 export default function Home({ notes }) {
+  const sortedNotes = notes.sort((a, b) => {
+    // sort dates alphabetically since they are in iso8601
+    // from https://stackoverflow.com/a/12192544/1001686
+    return (a.modified > b.modified) ? -1 : ((a.modified < b.modified) ? 1 : 0)
+  })
+
   return (
-    <div className="container px-16 mt-8 mx-auto space-y-1">
+    <div className="container px-16 mt-8 mx-auto">
       <Head>
         <title>Zach Latta</title>
       </Head>
@@ -12,24 +19,28 @@ export default function Home({ notes }) {
       <h1 className="font-medium leading-tight text-2xl mt-0 mb-2">
         Zach Latta
       </h1>
-      <p>
-        these days i'm living in vermont. coding profoundly changed my life,
-        and i'm trying to help more teenagers have that same experience.
-      </p>
 
-      <p>
-        beyond hack club, i enjoy reading, making computer projects, and deep
-        conversations.
-      </p>
+      <div className="space-y-1">
+        <p>
+          these days i'm living in vermont. coding profoundly changed my life,
+          and i'm trying to help more teenagers have that same experience.
+        </p>
 
-      <p>read posts:</p>
+        <p>
+          beyond hack club, i enjoy reading, making computer projects, and deep
+          conversations.
+        </p>
+      </div>
+
+      <h2 className="mt-2 mb-1">read posts:</h2>
 
       <ul className="list-disc list-inside">
-        {notes.map((note) => (
+        {sortedNotes.map((note) => (
           <li key={note.path}>
             <Link href={`/${note.path}`}>
               <a className="underline hover:decoration-dashed">{note.title}</a>
-            </Link>
+            </Link>{' '}
+            <span className="text-xs italic">(edited {format(note.modified)})</span>
           </li>
         ))}
       </ul>
@@ -50,7 +61,7 @@ export async function getStaticProps() {
       notes: notes.map(note => {
         return {
           path: note.name.replace(/\.md$/, ''),
-          title: note.title
+          ...note
         }
       }),
     },

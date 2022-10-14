@@ -32,7 +32,7 @@ export default function Home({ notes }) {
         </p>
       </div>
 
-      <h2 className="mt-2 mb-1">read posts:</h2>
+      <h2 className="mt-2 mb-1">read public notes:</h2>
 
       <ul className="list-disc list-inside">
         {sortedNotes.map((note) => (
@@ -44,6 +44,13 @@ export default function Home({ notes }) {
           </li>
         ))}
       </ul>
+
+      <p className="mt-3">
+        this site is open source at{' '}
+        <Link href="https://github.com/zachlatta/zachlatta.com">
+          <a className="underline">github.com/zachlatta/zachlatta.com</a>
+        </Link>
+      </p>
 
     </div>
   )

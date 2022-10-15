@@ -21,8 +21,7 @@ export async function getStaticPaths() {
                     note: note.name.replace(/\.md$/, '').split('/')
                 }
             }
-        }),
-        fallback: false
+        })
     }
 }
 

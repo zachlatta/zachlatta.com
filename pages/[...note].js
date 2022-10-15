@@ -40,8 +40,7 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             note,
-        },
-        revalidate: 60
+        }
     }
 }
 

@@ -71,7 +71,6 @@ export async function getStaticProps() {
           ...note
         }
       }),
-    },
-    revalidate: 60,
+    }
   }
 }

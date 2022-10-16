@@ -1,3 +1,11 @@
+# Personal Website
+
+This is the codebase for https://zachlatta.com. If you check the branches, you can see checkpoints of previous versions of the site (TODO: add the 8/21 version).
+
+The content for this site is pulled from [`zachlatta/public-notes`](https://github.com/zachlatta/public-notes) using the script in [`public-notes-sync/`](public-notes-sync/).
+
+---
+
 Design goals:
 
 - Feeling of being handmade, like Cliff Stoll's website

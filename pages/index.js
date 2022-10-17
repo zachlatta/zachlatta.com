@@ -30,14 +30,21 @@ export default function Home({ notes }) {
           beyond hack club, i enjoy reading, making computer projects, and deep
           conversations.
         </p>
+      </div>
 
+      <hr className="my-3" />
+
+      <div className="space-y-1">
         <p>
           below are a subset of notes that are public. these aren't really meant
           as blog posts, but more as a self-accountability mechanism to try and
-          make more of the things i'm doing public. similar to making the code
-          you might write on github public, even if it's not really meant for
-          others to look at it or use it - but you still make it public for
-          self-accountability.
+          make more of the things i'm doing and thinking about public.
+        </p>
+
+        <p>
+          the goal is to be similar to making the code you might write on github
+          public, even if it's not really meant for others to look at it or use it
+          - but you still make it public for self-accountability.
         </p>
       </div>
 
@@ -61,7 +68,7 @@ export default function Home({ notes }) {
         </Link>
       </p>
 
-    </div>
+    </div >
   )
 }
 

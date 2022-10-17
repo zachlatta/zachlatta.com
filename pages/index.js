@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import Link from '../components/Link'
 import { format } from 'timeago.js'
 import { getAllNotes, cache } from '../lib/notes'
 
@@ -24,7 +24,7 @@ export default function Home({ notes }) {
         <p>
           these days i'm living in vermont. coding profoundly changed my life,
           and i'm trying to help more teenagers have that same experience through{' '}
-          <Link href="https://hackclub.com"><a className="underline hover:decoration-dashed">hack club</a></Link>.
+          <Link href="https://hackclub.com">hack club</Link>.
         </p>
 
         <p>
@@ -54,9 +54,7 @@ export default function Home({ notes }) {
       <ul className="list-disc list-inside">
         {sortedNotes.map((note) => (
           <li key={note.path}>
-            <Link href={`/${note.path}`}>
-              <a className="underline hover:decoration-dashed">{note.title}</a>
-            </Link>{' '}
+            <Link href={`/${note.path}`}>{note.title}</Link>{' '}
             <span className="text-xs italic">(edited {format(note.modified)})</span>
           </li>
         ))}
@@ -64,9 +62,7 @@ export default function Home({ notes }) {
 
       <p className="mt-3">
         this site is open source at{' '}
-        <Link href="https://github.com/zachlatta/zachlatta.com">
-          <a className="underline">github.com/zachlatta/zachlatta.com</a>
-        </Link>
+        <Link href="https://github.com/zachlatta/zachlatta.com">github.com/zachlatta/zachlatta.com</Link>
       </p>
 
     </div >

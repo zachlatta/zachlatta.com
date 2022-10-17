@@ -1,6 +1,6 @@
 import { ApiError } from 'next/dist/server/api-utils'
 import Head from 'next/head'
-import Link from 'next/link'
+import Link from '../components/Link'
 import { useRouter } from 'next/router'
 import { format } from 'timeago.js'
 import { getAllNotes, cache } from '../lib/notes'
@@ -54,13 +54,9 @@ export default function Note({ note }) {
                 <title>{`${note.title} | Zach Latta`}</title>
             </Head>
             <div className="container px-16 mt-8 mx-auto">
-                <Link href="/">
-                    <a className="italic">Zach Latta</a>
-                </Link>
+                <Link href="/" className="italic">Zach Latta</Link>
                 {" -> "}
-                <Link href={asPath}>
-                    <a className="italic font-semibold">{note.title}</a>
-                </Link>
+                <Link href={asPath} className="italic font-semibold">{note.title}</Link>
 
                 <hr className="my-2"></hr>
 

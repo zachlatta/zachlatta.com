@@ -23,7 +23,8 @@ export default function Home({ notes }) {
       <div className="space-y-1">
         <p>
           these days i'm living in vermont. coding profoundly changed my life,
-          and i'm trying to help more teenagers have that same experience.
+          and i'm trying to help more teenagers have that same experience through{' '}
+          <Link href="https://hackclub.com"><a className="underline hover:decoration-dashed">hack club</a></Link>.
         </p>
 
         <p>

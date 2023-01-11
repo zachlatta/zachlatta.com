@@ -4,6 +4,8 @@ This is the codebase for https://zachlatta.com. If you check the branches, you c
 
 The content for this site is pulled from [`zachlatta/public-notes`](https://github.com/zachlatta/public-notes) using the script in [`public-notes-sync/`](public-notes-sync/).
 
+`GITHUB` needs to be set to an authentication token from GitHub.
+
 ---
 
 Design goals:

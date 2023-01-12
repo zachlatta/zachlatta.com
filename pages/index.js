@@ -20,15 +20,15 @@ export default function Home({ notes }) {
         Zach Latta
       </h1>
 
-      <div className="space-y-1">
+      <div className="space-y-1 lowercase">
         <p>
-          these days i'm living in vermont. coding profoundly changed my life,
-          and i'm trying to help more teenagers have that same experience through{' '}
-          <Link href="https://hackclub.com">hack club</Link>.
+          These days I'm living in Vermont. Coding profoundly changed my life,
+          and I'm trying to help more teenagers have that same experience through{' '}
+          <Link href="https://hackclub.com">Hack Club</Link>.
         </p>
 
         <p>
-          beyond hack club, i enjoy reading, making computer projects, and deep
+          Beyond Hack Club, I enjoy reading, making computer projects, and deep
           conversations.
         </p>
       </div>
@@ -37,19 +37,19 @@ export default function Home({ notes }) {
 
       <div className="space-y-1">
         <p>
-          below are a subset of notes that are public. these aren't really meant
+          Below are a subset of notes that are public. These aren't really meant
           as blog posts, but more as a self-accountability mechanism to try and
-          make more of the things i'm doing and thinking about public.
+          make more of the things I'm doing and thinking about public.
         </p>
 
         <p>
-          the goal is to be similar to making the code you might write on github
+          The goal is to be similar to making the code you might write on GitHub
           public, even if it's not really meant for others to look at it or use it
           - but you still make it public for self-accountability.
         </p>
       </div>
 
-      <h2 className="mt-2 mb-1">read public notes:</h2>
+      <h2 className="mt-2 mb-1">Read public notes:</h2>
 
       <ul className="list-disc list-inside">
         {sortedNotes.map((note) => (
@@ -61,8 +61,8 @@ export default function Home({ notes }) {
       </ul>
 
       <p className="mt-3">
-        this site is open source at{' '}
-        <Link href="https://github.com/zachlatta/zachlatta.com">github.com/zachlatta/zachlatta.com</Link>
+        This site is open source at{' '}
+        <Link href="https://github.com/zachlatta/zachlatta.com">github.com/zachlatta/zachlatta.com</Link>.
       </p>
 
     </div >
